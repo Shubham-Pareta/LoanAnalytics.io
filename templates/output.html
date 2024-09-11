@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loan Approval Result</title>
+    <link rel="stylesheet" href="/static/output.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Loan Approval Result</h1>
+
+        <!-- Display image based on the output -->
+        {% if output == 'Loan Approved' %}
+        <img src="/static/loan_approved.png" alt="Loan Approved">
+        {% else %}
+        <img src="/static/loan_denied.png" alt="Loan Denied">
+        {% endif %}
+
+        <p>{{ output }}</p>
+        <a href="/home" class="btn btn-primary">Home</a>
+        <a href="/project" class="btn btn-secondary">Try Again</a>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loan Approval Form</title>
+    <link rel="stylesheet" href="/static/project.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Loan Approval Form</h1>
+        <form action="{{ url_for('make_prediction') }}" method="post" id="contact-form" >
+            <div class="mb-3">
+                <label for="no_of_dependents" class="form-label">Number of Dependents</label>
+                <select class="form-select" id="no_of_dependents" name="no_of_dependents" required>
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="income_annum" class="form-label">Annual Income</label>
+                <input type="number" class="form-control" id="income_annum" name="income_annum" required>
+            </div>
+            <div class="mb-3">
+                <label for="loan_amount" class="form-label">Loan Amount</label>
+                <input type="number" class="form-control" id="loan_amount" name="loan_amount" required>
+            </div>
+            <div class="mb-3">
+                <label for="loan_term" class="form-label">Loan Term (in months)</label>
+                <input type="number" class="form-control" id="loan_term" name="loan_term" required>
+            </div>
+            <div class="mb-3">
+                <label for="cibil_score" class="form-label">CIBIL Score</label>
+                <input type="number" class="form-control" id="cibil_score" name="cibil_score" required>
+            </div>
+            <div class="mb-3">
+                <label for="residential_assets_value" class="form-label">Residential Assets Value</label>
+                <input type="number" class="form-control" id="residential_assets_value" name="residential_assets_value" required>
+            </div>
+            <div class="mb-3">
+                <label for="commercial_assets_value" class="form-label">Commercial Assets Value</label>
+                <input type="number" class="form-control" id="commercial_assets_value" name="commercial_assets_value" required>
+            </div>
+            <div class="mb-3">
+                <label for="luxury_assets_value" class="form-label">Luxury Assets Value</label>
+                <input type="number" class="form-control" id="luxury_assets_value" name="luxury_assets_value" required>
+            </div>
+            <div class="mb-3">
+                <label for="bank_asset_value" class="form-label">Bank Asset Value</label>
+                <input type="number" class="form-control" id="bank_asset_value" name="bank_asset_value" required>
+            </div>
+            <div class="mb-3">
+                <label for="education_Not_Graduate" class="form-label">Education Level</label>
+                <select class="form-select" id="education_Not_Graduate" name="education_Not_Graduate" required>
+                    <option value="0">Graduate</option>
+                    <option value="1">Not Graduate</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="self_employed_Yes" class="form-label">Self Employed</label>
+                <select class="form-select" id="self_employed_Yes" name="self_employed_Yes" required>
+                    <option value="0">No</option>
+                    <option value="1">Yes</option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+            <a href="/" class="btn btn-secondary">Back</a>
+        </form>
+    </div>
+</body>
+
+</html>

@@ -1,38 +1,250 @@
 body {
-    background-color: #f8f9fa;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
     margin: 0;
-    font-family: Arial, sans-serif;
+    padding: 20px;
 }
 
-.container {
+.result-container {
+    width: 100%;
+    max-width: 600px;
+}
+
+.result-card {
+    background: white;
+    border-radius: 15px;
+    padding: 40px;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
     text-align: center;
-    background-color: #ffffff;
+}
+
+.result-icon {
+    font-size: 80px;
+    margin-bottom: 20px;
+}
+
+.result-icon .approved {
+    color: #2ecc71;
+}
+
+.result-icon .rejected {
+    color: #e74c3c;
+}
+
+.result-title {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: #0A2940;
+}
+
+.result-message {
+    font-size: 1.1rem;
+    color: #555;
+    margin-bottom: 30px;
+    line-height: 1.6;
+}
+
+.result-details {
     padding: 20px;
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    max-width: 600px;
-    width: 100%;
+    margin-bottom: 30px;
+    text-align: left;
 }
 
-h1 {
-    color: #343a40;
-    margin-bottom: 20px;
+.result-details h3 {
+    font-size: 1.3rem;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #0A2940;
 }
 
-p {
+.result-details h3 i {
     font-size: 1.2rem;
-    margin-bottom: 20px;
 }
 
-img {
-    max-width: 100%;
-    margin-bottom: 20px;
+.result-details ul {
+    list-style: none;
+    padding: 0;
+}
+
+.result-details ul li {
+    margin-bottom: 10px;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+.result-details ul li i {
+    margin-top: 3px;
+}
+
+.approved-bg {
+    background-color: rgba(46, 204, 113, 0.1);
+    border-left: 4px solid #2ecc71;
+}
+
+.approved-bg ul li i {
+    color: #2ecc71;
+}
+
+.rejected-bg {
+    background-color: rgba(231, 76, 60, 0.1);
+    border-left: 4px solid #e74c3c;
+}
+
+.rejected-bg ul li i {
+    color: #e74c3c;
+}
+
+.result-actions {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
 }
 
 .btn {
-    margin: 5px;
+    padding: 12px 25px;
+    border-radius: 8px;
+    font-weight: 600;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.3s ease;
+}
+
+.btn-try-again {
+    background-color: #0A2940;
+    color: white;
+}
+
+.btn-home {
+    background-color: #f1f1f1;
+    color: #333;
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.btn-try-again:hover {
+    background-color: #55BA53;
+}
+
+.btn-home:hover {
+    background-color: #e1e1e1;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .result-card {
+        padding: 30px 20px;
+    }
+    
+    .result-title {
+        font-size: 2rem;
+    }
+    
+    .result-actions {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .btn {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+/* Responsive Design */
+
+/* Tablets (≤ 992px) */
+@media (max-width: 992px) {
+    .result-title {
+        font-size: 2.2rem;
+    }
+
+    .result-message {
+        font-size: 1rem;
+    }
+
+    .result-card {
+        padding: 35px 25px;
+    }
+}
+
+/* Mobiles (≤ 768px) */
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+        height: auto;
+    }
+
+    .result-card {
+        padding: 30px 20px;
+    }
+
+    .result-title {
+        font-size: 1.8rem;
+    }
+
+    .result-icon {
+        font-size: 60px;
+        margin-bottom: 15px;
+    }
+
+    .result-details h3 {
+        font-size: 1.1rem;
+    }
+
+    .result-details ul li {
+        font-size: 0.95rem;
+    }
+
+    .result-actions {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .btn {
+        width: 100%;
+        justify-content: center;
+        font-size: 0.95rem;
+        padding: 10px 20px;
+    }
+}
+
+/* Small Mobiles (≤ 576px) */
+@media (max-width: 576px) {
+    .result-title {
+        font-size: 1.5rem;
+    }
+
+    .result-message {
+        font-size: 0.9rem;
+    }
+
+    .result-details {
+        padding: 15px;
+    }
+
+    .result-details h3 {
+        font-size: 1rem;
+    }
+
+    .result-details ul li {
+        font-size: 0.9rem;
+    }
+
+    .result-icon {
+        font-size: 50px;
+    }
 }

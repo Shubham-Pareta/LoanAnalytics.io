@@ -2,4 +2,3 @@ Flask
 numpy
 tensorflow
 joblib
-mysql-connector-python

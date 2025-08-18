@@ -1,79 +1,145 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Loan Approval Form</title>
-    <link rel="stylesheet" href="/static/project.css">
+    <title>Loan Approval Prediction | Quick Check</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='project.css') }}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
 </head>
-
 <body>
-    <div class="container">
-        <h1>Loan Approval Form</h1>
-        <form action="{{ url_for('make_prediction') }}" method="post" id="contact-form" >
-            <div class="mb-3">
-                <label for="no_of_dependents" class="form-label">Number of Dependents</label>
-                <select class="form-select" id="no_of_dependents" name="no_of_dependents" required>
-                    <option value="0">0</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                </select>
+    <div class="prediction-container">
+        <div class="form-wrapper animate__animated animate__fadeIn">
+            <div class="form-header">
+                <h1><i class="fas fa-calculator"></i> Loan Approval Prediction</h1>
+                <p>Fill in your financial details to get an instant prediction</p>
             </div>
-            <div class="mb-3">
-                <label for="income_annum" class="form-label">Annual Income</label>
-                <input type="number" class="form-control" id="income_annum" name="income_annum" required>
+            
+            <form action="{{ url_for('make_prediction') }}" method="post" id="prediction-form">
+                <div class="form-grid">
+                    <!-- Personal Information -->
+                    <div class="form-section">
+                        <h3><i class="fas fa-user"></i> Personal Information</h3>
+                        <div class="mb-3">
+                            <label for="no_of_dependents" class="form-label">Number of Dependents</label>
+                            <select class="form-select" id="no_of_dependents" name="no_of_dependents" required>
+                                <option value="" selected disabled>Select dependents</option>
+                                <option value="0">0</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="education_Not_Graduate" class="form-label">Education Level</label>
+                            <select class="form-select" id="education_Not_Graduate" name="education_Not_Graduate" required>
+                                <option value="" selected disabled>Select education level</option>
+                                <option value="0">Graduate</option>
+                                <option value="1">Not Graduate</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="self_employed_Yes" class="form-label">Employment Status</label>
+                            <select class="form-select" id="self_employed_Yes" name="self_employed_Yes" required>
+                                <option value="" selected disabled>Select employment status</option>
+                                <option value="0">Salaried</option>
+                                <option value="1">Self Employed</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <!-- Financial Information -->
+                    <div class="form-section">
+                        <h3><i class="fas fa-money-bill-wave"></i> Financial Information</h3>
+                        <div class="mb-3">
+                            <label for="income_annum" class="form-label">Annual Income ($)</label>
+                            <input type="number" class="form-control" id="income_annum" name="income_annum" placeholder="Enter annual income" required>
+                            <div class="form-text">Your total yearly income before taxes</div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="loan_amount" class="form-label">Loan Amount ($)</label>
+                            <input type="number" class="form-control" id="loan_amount" name="loan_amount" placeholder="Enter loan amount" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="loan_term" class="form-label">Loan Term (months)</label>
+                            <input type="number" class="form-control" id="loan_term" name="loan_term" placeholder="Enter loan term" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="cibil_score" class="form-label">CIBIL Score</label>
+                            <input type="number" class="form-control" id="cibil_score" name="cibil_score" min="300" max="900" placeholder="Enter CIBIL score (300-900)" required>
+                            <div class="score-indicator">
+                                <span class="score-low">Poor</span>
+                                <span class="score-medium">Fair</span>
+                                <span class="score-good">Good</span>
+                                <span class="score-excellent">Excellent</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Asset Information -->
+                    <div class="form-section">
+                        <h3><i class="fas fa-home"></i> Asset Information</h3>
+                        <div class="mb-3">
+                            <label for="residential_assets_value" class="form-label">Residential Assets Value ($)</label>
+                            <input type="number" class="form-control" id="residential_assets_value" name="residential_assets_value" placeholder="Enter value" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="commercial_assets_value" class="form-label">Commercial Assets Value ($)</label>
+                            <input type="number" class="form-control" id="commercial_assets_value" name="commercial_assets_value" placeholder="Enter value" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="luxury_assets_value" class="form-label">Luxury Assets Value ($)</label>
+                            <input type="number" class="form-control" id="luxury_assets_value" name="luxury_assets_value" placeholder="Enter value" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="bank_asset_value" class="form-label">Bank Asset Value ($)</label>
+                            <input type="number" class="form-control" id="bank_asset_value" name="bank_asset_value" placeholder="Enter value" required>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-predict">
+                        <i class="fas fa-chart-line"></i> Predict Approval
+                    </button>
+                    <a href="/" class="btn btn-back">
+                        <i class="fas fa-arrow-left"></i> Back to Home
+                    </a>
+                </div>
+            </form>
+        </div>
+        
+        <div class="info-panel animate__animated animate__fadeInRight">
+            <h3><i class="fas fa-info-circle"></i> How It Works</h3>
+            <ul>
+                <li><i class="fas fa-check-circle"></i> Our AI analyzes 11 key financial factors</li>
+                <li><i class="fas fa-check-circle"></i> Secure and confidential processing</li>
+                <li><i class="fas fa-check-circle"></i> No impact on your credit score</li>
+            </ul>
+            
+            <div class="tips-section">
+                <h4><i class="fas fa-lightbulb"></i> Tips for Better Approval</h4>
+                <div class="tip-card">
+                    <i class="fas fa-credit-card"></i>
+                    <p>Maintain a CIBIL score above 750</p>
+                </div>
+                <div class="tip-card">
+                    <i class="fas fa-percentage"></i>
+                    <p>Keep debt-to-income ratio below 35%</p>
+                </div>
+                <div class="tip-card">
+                    <i class="fas fa-piggy-bank"></i>
+                    <p>Show stable income history</p>
+                </div>
             </div>
-            <div class="mb-3">
-                <label for="loan_amount" class="form-label">Loan Amount</label>
-                <input type="number" class="form-control" id="loan_amount" name="loan_amount" required>
-            </div>
-            <div class="mb-3">
-                <label for="loan_term" class="form-label">Loan Term (in months)</label>
-                <input type="number" class="form-control" id="loan_term" name="loan_term" required>
-            </div>
-            <div class="mb-3">
-                <label for="cibil_score" class="form-label">CIBIL Score</label>
-                <input type="number" class="form-control" id="cibil_score" name="cibil_score" required>
-            </div>
-            <div class="mb-3">
-                <label for="residential_assets_value" class="form-label">Residential Assets Value</label>
-                <input type="number" class="form-control" id="residential_assets_value" name="residential_assets_value" required>
-            </div>
-            <div class="mb-3">
-                <label for="commercial_assets_value" class="form-label">Commercial Assets Value</label>
-                <input type="number" class="form-control" id="commercial_assets_value" name="commercial_assets_value" required>
-            </div>
-            <div class="mb-3">
-                <label for="luxury_assets_value" class="form-label">Luxury Assets Value</label>
-                <input type="number" class="form-control" id="luxury_assets_value" name="luxury_assets_value" required>
-            </div>
-            <div class="mb-3">
-                <label for="bank_asset_value" class="form-label">Bank Asset Value</label>
-                <input type="number" class="form-control" id="bank_asset_value" name="bank_asset_value" required>
-            </div>
-            <div class="mb-3">
-                <label for="education_Not_Graduate" class="form-label">Education Level</label>
-                <select class="form-select" id="education_Not_Graduate" name="education_Not_Graduate" required>
-                    <option value="0">Graduate</option>
-                    <option value="1">Not Graduate</option>
-                </select>
-            </div>
-            <div class="mb-3">
-                <label for="self_employed_Yes" class="form-label">Self Employed</label>
-                <select class="form-select" id="self_employed_Yes" name="self_employed_Yes" required>
-                    <option value="0">No</option>
-                    <option value="1">Yes</option>
-                </select>
-            </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
-            <a href="/" class="btn btn-secondary">Back</a>
-        </form>
+        </div>
     </div>
-</body>
 
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
 </html>

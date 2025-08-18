@@ -1,4 +1,7 @@
 Flask
-numpy
+Werkzeug
 tensorflow
+numpy
+Pillow
 joblib
+scikit-learn

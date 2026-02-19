@@ -57,7 +57,7 @@ def make_prediction():
         
         # Make a prediction
         prediction = model.predict(data_scaled)
-        output = 'Loan Approved' if prediction[0][0] >= 0.5 else 'Loan Rejected'
+        output = 'Loan Approved' if prediction[0][0] < 0.5 else 'Loan Rejected'
         
         # Render the output page with the result
         return render_template('output.html', output=output)
